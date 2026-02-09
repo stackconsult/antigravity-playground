@@ -7,33 +7,22 @@
 
 ## Recurring Workflows
 
-### Daily
-- [ ] Run `npm test` to verify build integrity
-- [ ] Check `.antigravity/context/execution.log` for anomalies
+### Daily Health Check (Ground Zero)
+- [ ] Run `npm test` (18-Point Integrity Check)
+- [ ] Run `npm run lint` & `npm run format -- --check`
+- [ ] Check `CHANGELOG.md` for undocumented changes
 
-### On New Feature
-- [ ] Create feature branch: `git checkout -b feature/[name]`
-- [ ] Update `.antigravity/context/PLAN.md` with atomic steps
-- [ ] Execute Phase 2 loop (code → lint → build → commit)
-- [ ] Run full test suite
-- [ ] Push and create PR
-
-### On CI Failure
-- [ ] Execute `SKILL 3: AUTONOMOUS FIX` from AGENT_OS.md
-- [ ] If 3 attempts fail, escalate to human
-
-### On Context Depletion
-- [ ] Execute `SKILL 2: CONTEXT COMPACTION` from AGENT_OS.md
-- [ ] Verify summary.md was created
-- [ ] Continue with fresh context window
+### On New Agent Session
+- [ ] Execute **Phase 0: Boot Sequence** from `WORKFLOW.md`
+- [ ] Load Kernel and verify Product Vision in `AGENTS.md`
+- [ ] Compaction check on `.antigravity/context/`
 
 ---
 
-## Completed Tasks
-*Archive of completed work.*
+## Completed Tasks Archive
 
-| Date | Task | Status |
-|------|------|--------|
-| 2026-02-08 | Framework Initialization | ✅ Complete |
-| 2026-02-08 | Bootloader Protocol Added | ✅ Complete |
-| 2026-02-08 | Gap Audit & Fixes | ✅ In Progress |
+| Date | Task | Status | Note |
+|------|------|--------|------|
+| 2026-02-09 | Production Optimization v2.3 | ✅ Complete | Hygiene, Tooling, Kernel refined. |
+| 2026-02-09 | Workflow & Verification Tune-up | ✅ Complete | CI, Skills, Docs synced. |
+| 2026-02-08 | Framework Initialization | ✅ Complete | Initial scaffold. |

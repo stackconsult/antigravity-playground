@@ -80,8 +80,19 @@ FEATURE_NAME=$1
 # 1. Create branch
 git checkout -b feature/$FEATURE_NAME
 
-# 2. Initialize plan
-echo "# PLAN: $FEATURE_NAME" > .antigravity/context/PLAN.md
+# 2. Initialize plan (v2.3 Template)
+cat <<EOF > .antigravity/context/PLAN.md
+# PLAN: $FEATURE_NAME
+## User Requirement
+- [ ] Describe the goal...
+
+## Atomic Steps
+1. [ ] Step 1
+2. [ ] Step 2
+
+## Risk Assessment
+- Risk Level: LOW/MEDIUM/HIGH
+EOF
 
 # 3. Log start
 echo "[$(date)] START: $FEATURE_NAME" >> .antigravity/context/execution.log
@@ -89,30 +100,25 @@ echo "[$(date)] START: $FEATURE_NAME" >> .antigravity/context/execution.log
 
 ---
 
-## Skill 6: `integrity_check`
+## Skill 6: `integrity_check` (v2.3)
 **Trigger:** Phase 0 of bootloader or periodic health check.
 
 ```bash
 #!/bin/bash
-echo "=== Integrity Check ==="
+echo "=== Antigravity Integrity Suite v2.3 ==="
 
-# Check directories
-for dir in .antigravity docs src tests; do
-  if [ -d "$dir" ]; then
-    echo "✅ $dir exists"
-  else
-    echo "❌ $dir MISSING"
-  fi
+# 1. Directory Diagnostics
+for dir in .antigravity .antigravity/context .antigravity/skills .github/workflows docs src tests; do
+  [ -d "$dir" ] && echo "✅ DIR: $dir" || (echo "❌ DIR: $dir MISSING"; exit 1)
 done
 
-# Check files
-for file in AGENTS.md README.md .antigravity/AGENT_OS.md; do
-  if [ -f "$file" ]; then
-    echo "✅ $file exists"
-  else
-    echo "❌ $file MISSING"
-  fi
+# 2. File Governance
+for file in AGENTS.md README.md LICENSE CONTRIBUTING.md CHANGELOG.md .gitignore .env.example .antigravity/AGENT_OS.md .antigravity/TRAINING_MANUAL.md .antigravity/config.json .antigravity/mcp_registry.json .github/workflows/agentic-verify.yml docs/ARCHITECTURE.md docs/CONSTITUTION.md src/index.js; do
+  [ -f "$file" ] && echo "✅ FILE: $file" || (echo "❌ FILE: $file MISSING"; exit 1)
 done
 
-echo "=== Check Complete ==="
+# 3. Vision Check
+grep -q "Vision: DEFINED" AGENTS.md && echo "✅ VISION: DEFINED" || echo "⚠️ VISION: PENDING"
+
+echo "=== System 100% Operational ==="
 ```

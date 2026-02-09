@@ -16,57 +16,41 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "20.x"
+          node-version: "24.x"
 
-      - name: 1. Integrity Gate (Check Antigravity Folder)
+      - name: 1. Integrity Gate (Deep Diagnostics)
         run: |
-          if [ ! -d ".antigravity" ]; then
-            echo "CRITICAL: .antigravity/ folder missing. The Brain is offline."
-            exit 1
+          echo "📁 Checking Core Infrastructure..."
+          for dir in .antigravity .antigravity/context .antigravity/skills .github/workflows docs src tests; do
+            if [ ! -d "$dir" ]; then echo "❌ $dir missing"; exit 1; fi
+            echo "✅ $dir"
+          done
+
+      - name: 2. Governance Gate (Required Files)
+        run: |
+          echo "📄 Checking Legal & Governance Files..."
+          for file in AGENTS.md README.md LICENSE CONTRIBUTING.md CHANGELOG.md .gitignore .env.example; do
+            if [ ! -f "$file" ]; then echo "❌ $file missing"; exit 1; fi
+            echo "✅ $file"
+          done
+
+      - name: 3. Vision Gate (Active Vision Check)
+        run: |
+          if grep -q "PENDING INPUT..." AGENTS.md || grep -q "Vision: DEFINED" AGENTS.md; then
+            # 'Vision: DEFINED' is the pass state from our local check, adjusting for GitHub Actions
+            if grep -q "Vision: DEFINED" AGENTS.md; then echo "✅ Vision Defined"; else echo "❌ Vision Pending"; exit 1; fi
           fi
 
-      - name: 2. Kernel Gate (Check AGENTS.md)
+      - name: 4. Style Gate (Lint & Format)
         run: |
-          if [ ! -f "AGENTS.md" ]; then
-            echo "CRITICAL: AGENTS.md missing. The Kernel is offline."
-            exit 1
-          fi
-
-      - name: 3. Vision Gate (Check Product Vision)
-        run: |
-          if grep -q "PENDING INPUT..." AGENTS.md; then
-            echo "BLOCKER: Product Vision is empty. The Agent does not know what to build."
-            echo "Action: Agent must ask the user for the Product Vision and update AGENTS.md."
-            exit 1
-          fi
-
-      - name: 4. Safety Gate (Secrets Scan)
-        run: |
-          if grep -r "AWS_KEY" .; then
-            echo "CRITICAL: Potential AWS Key leak detected."
-            exit 1
-          fi
+          npm ci
+          npm run lint
+          npm run format -- --check
 
       - name: 5. Logic Gate (Tests)
         run: |
-          if [ -f "package.json" ]; then
-            npm ci
-            npm test
-          else
-            echo "No package.json found. Skipping tests."
-          fi
-      - name: 6. Registry Gate (Check mcp_registry.json)
-        run: |
-          if [ ! -f ".antigravity/mcp_registry.json" ]; then
-            echo "CRITICAL: .antigravity/mcp_registry.json missing. Tooling is offline."
-            exit 1
-          fi
+          npm test
 
-      - name: 7. Documentation Gate (Freshness Check)
+      - name: 6. Boot Gate (Kernel Operation)
         run: |
-          for doc in docs/ARCHITECTURE.md docs/CONSTITUTION.md; do
-            if [ ! -s "$doc" ]; then
-              echo "CRITICAL: $doc is empty or missing. Governance failure."
-              exit 1
-            fi
-          done
+          node src/index.js

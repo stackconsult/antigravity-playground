@@ -4,19 +4,27 @@ This document defines the end-to-end lifecycle for professional automation proje
 
 ---
 
-## 1. Ideation & Planning
-- **Goal**: Define the core value proposition and automation logic.
+## Phase 0: The Boot Sequence (Agent Initialization)
+- **Goal**: Establish the "Golden Gate" safety and awareness baseline.
 - **Workflow**:
-    - Trigger `PLANNING AGENT` to generate `PLAN.md` in `.antigravity/context/`.
-    - Perform "Gap Audit" using **Skill 6: `integrity_check`**.
+    1.  **Environment Sync**: Run `node -v` and `npm install`.
+    2.  **Kernel Load**: Read `AGENTS.md` and check **Product Vision**.
+    3.  **Integrity Verification**: Execute `Skill 6: integrity_check`.
+- **Exit Condition**: 100% Green check; non-empty Product Vision.
 
-## 2. Structure & Implementation
-- **Goal**: Build the core logic and user interface.
+## 1. Ideation & Planning (Agent/Human Loop)
+- **Goal**: Define the macro-architecture and atomic task plan.
 - **Workflow**:
-    - **Back-end**: Build Node.js modules for logic.
-    - **Front-end**: Develop UI components.
-    - **Feature Branching**: Use **Skill 5: `git_feature_workflow`**.
-    - **Skill Application**: Leverage `.antigravity/skills/` for recurring patterns.
+    - **Human**: Populates Product Vision in `AGENTS.md`.
+    - **Agent**: Generates `PLAN.md` using the v2.3 template (Skill 5).
+    - **Human**: Reviews/Approves `PLAN.md` in `.antigravity/context/`.
+
+## 2. Structure & Implementation (Deep Agent Execution)
+- **Goal**: Deterministic build out of logic and UI.
+- **Workflow**:
+    - **Agent**: Follows the `PLAN.md` loop (edit → test → verify).
+    - **Governance**: Every commit must pass the `Agentic Verification` CI pipeline.
+    - **Skill Application**: Repeated patterns are pulled from/pushed to `.antigravity/skills/`.
 
 ## 3. Integration & Electron Transition
 - **Goal**: Convert the web/node project into a native desktop application.
