@@ -3,7 +3,16 @@
   "cost_budget": 5.00,
   "whitelist": [
     "github.com",
-    "npmjs.com"
+    "npmjs.com",
+    "electronjs.org"
   ],
-  "session_id": "24e10c6e-743d-40e2-9857-582f73ac6f57"
+  "tech_stack": {
+    "runtime": [
+      "node",
+      "electron"
+    ],
+    "package_manager": "npm",
+    "build_tool": "electron-forge"
+  },
+  "session_id": "c81fd554-c3ae-46f2-8a46-86a3bc35099d"
 }
