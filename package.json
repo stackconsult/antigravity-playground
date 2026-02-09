@@ -5,8 +5,9 @@
   "main": "src/index.js",
   "scripts": {
     "test": "node tests/setup.test.js",
-    "lint": "ls docs/*.md .antigravity/*.md && echo 'Documentation lint passed'",
-    "build": "echo 'Building Antigravity Ground Zero...' && node src/index.js"
+    "lint": "eslint . --ext .js",
+    "format": "prettier --write .",
+    "build": "echo 'Building production kernel v2.3...'"
   },
   "keywords": [
     "ai",

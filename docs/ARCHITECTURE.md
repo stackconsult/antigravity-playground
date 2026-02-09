@@ -15,5 +15,13 @@ The Antigravity Framework is a **Deterministic State Machine** designed for high
 3.  **Execute:** Implementation with immediate verification (lint/build).
 4.  **Reflect:** Post-mortem on failures and skill crystallization.
 
-## 4. MCD TOOLS INTEGRATION
+## 4. DATA FLOW & IPC LOGIC
+The framework uses a **Uni-directional Data Flow** for state changes:
+1.  **Request**: User or Agent triggers an action.
+2.  **Kernel Intercept**: checks `AGENTS.md` for permissions.
+3.  **Skill Execution**: Deterministic logic from `.antigravity/skills/` is invoked.
+4.  **Truth Verification**: Output is validated against `tests/`.
+5.  **State Commit**: Success is logged to `execution.log` and `summary.md`.
+
+## 5. MCP TOOLS INTEGRATION
 Tools are accessed via the `mcp_registry.json`. Any new tool must be vetted and registered before use in automated workflows.
