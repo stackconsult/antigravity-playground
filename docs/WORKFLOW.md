@@ -13,6 +13,14 @@ This document defines the end-to-end lifecycle for professional automation proje
   3.  **Integrity Verification**: Execute `Skill 6: integrity_check`.
 - **Exit Condition**: 100% Green check; non-empty Product Vision.
 
+## Phase 0.5: Tooling Verification (Pre-CI Check)
+
+- **Goal**: Prevent avoidable CI failures (The "Lockfile Law").
+- **Workflow**:
+  1.  **Lockfile**: Ensure `package-lock.json` exists and is synced (`npm install --package-lock-only`).
+  2.  **Linter**: Verify `eslint.config.js` is V9 compliant.
+  3.  **Local Test**: Run `npm run lint` && `npm run format` locally before ANY push.
+
 ## 1. Ideation & Planning (Agent/Human Loop)
 
 - **Goal**: Define the macro-architecture and atomic task plan.

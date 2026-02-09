@@ -11,6 +11,7 @@ _None currently active._
 ### Daily Health Check (Ground Zero)
 
 - [ ] Run `npm test` (18-Point Integrity Check)
+- [ ] **Verify `package-lock.json` is present and git-tracked**
 - [ ] Run `npm run lint` & `npm run format -- --check`
 - [ ] Check `CHANGELOG.md` for undocumented changes
 

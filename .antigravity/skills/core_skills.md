@@ -15,6 +15,14 @@ mkdir -p .github/workflows docs src tests
 touch AGENTS.md README.md
 touch .antigravity/config.json .antigravity/mcp_registry.json
 echo '{"autonomy_level": 1, "cost_budget": 5.00}' > .antigravity/config.json
+
+# Tooling Basics
+npm init -y
+npm install --save-dev eslint prettier globals @eslint/js
+# Force lockfile generation
+npm install --package-lock-only
+# Create ESLint Config (v9)
+echo 'module.exports = [];' > eslint.config.js
 ```
 
 ---
@@ -119,7 +127,7 @@ for dir in .antigravity .antigravity/context .antigravity/skills .github/workflo
 done
 
 # 2. File Governance
-for file in AGENTS.md README.md LICENSE CONTRIBUTING.md CHANGELOG.md .gitignore .env.example .antigravity/AGENT_OS.md .antigravity/TRAINING_MANUAL.md .antigravity/config.json .antigravity/mcp_registry.json .github/workflows/agentic-verify.yml docs/ARCHITECTURE.md docs/CONSTITUTION.md src/index.js; do
+for file in AGENTS.md README.md LICENSE CONTRIBUTING.md CHANGELOG.md .gitignore .env.example .antigravity/AGENT_OS.md .antigravity/TRAINING_MANUAL.md .antigravity/config.json .antigravity/mcp_registry.json .github/workflows/agentic-verify.yml docs/ARCHITECTURE.md docs/CONSTITUTION.md src/index.js package-lock.json eslint.config.js; do
   [ -f "$file" ] && echo "✅ FILE: $file" || (echo "❌ FILE: $file MISSING"; exit 1)
 done
 
