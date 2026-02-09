@@ -1,0 +1,9 @@
+{
+  "autonomy_level": 1,
+  "cost_budget": 5.00,
+  "whitelist": [
+    "github.com",
+    "npmjs.com"
+  ],
+  "session_id": "24e10c6e-743d-40e2-9857-582f73ac6f57"
+}

@@ -1,0 +1,12 @@
+{
+  "approved_tools": [
+    {
+      "name": "GitKraken",
+      "purpose": "Source control and repository management"
+    },
+    {
+      "name": "genkit-mcp-server",
+      "purpose": "AI framework documentation and flow management"
+    }
+  ]
+}

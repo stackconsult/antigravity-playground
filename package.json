@@ -1,0 +1,19 @@
+{
+  "name": "antigravity-playground",
+  "version": "1.0.0",
+  "description": "Autonomous Agent Engineering Framework",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node tests/setup.test.js",
+    "lint": "echo 'No linter configured yet'",
+    "build": "echo 'No build step configured yet'"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "autonomous",
+    "framework"
+  ],
+  "author": "",
+  "license": "MIT"
+}
