@@ -7,12 +7,9 @@
     "electronjs.org"
   ],
   "tech_stack": {
-    "runtime": [
-      "node",
-      "electron"
-    ],
-    "package_manager": "npm",
-    "build_tool": "electron-forge"
+    "runtime": "node v24+",
+    "framework": "electron",
+    "automation": "antigravity"
   },
-  "session_id": "c81fd554-c3ae-46f2-8a46-86a3bc35099d"
+  "session_id": "template-master-ground-zero"
 }

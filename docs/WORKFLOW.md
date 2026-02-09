@@ -7,15 +7,15 @@ This document defines the end-to-end lifecycle for professional automation proje
 ## 1. Ideation & Planning
 - **Goal**: Define the core value proposition and automation logic.
 - **Workflow**:
-    - Trigger `PLANNING AGENT` with high-level requirement.
-    - Generate `PLAN.md` in `.antigravity/context/`.
-    - Perform "Gap Audit" to identify missing tools or permissions.
+    - Trigger `PLANNING AGENT` to generate `PLAN.md` in `.antigravity/context/`.
+    - Perform "Gap Audit" using **Skill 6: `integrity_check`**.
 
 ## 2. Structure & Implementation
 - **Goal**: Build the core logic and user interface.
 - **Workflow**:
-    - **Back-end**: Build Node.js modules for logic and MCP database interactions.
-    - **Front-end**: Develop UI components (using preferred stack like React/Angular).
+    - **Back-end**: Build Node.js modules for logic.
+    - **Front-end**: Develop UI components.
+    - **Feature Branching**: Use **Skill 5: `git_feature_workflow`**.
     - **Skill Application**: Leverage `.antigravity/skills/` for recurring patterns.
 
 ## 3. Integration & Electron Transition

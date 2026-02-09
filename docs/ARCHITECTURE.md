@@ -1,7 +1,7 @@
 # docs/ARCHITECTURE.md - System Boundaries
 
 ## 1. DESIGN PHILOSOPHY
-The Antigravity Framework is a **Deterministic State Machine**. Reliability is prioritized over speed.
+The Antigravity Framework is a **Deterministic State Machine** designed for high-stakes automation. This "Ground Zero" playground acts as the immutable root template, providing the ontological structure (memory, kernel, truth) required for agents to operate with 100% reliability. Reliability is prioritized over speed; verification is mandatory at every state transition.
 
 ## 2. COMPONENT BOUNDARIES
 - **Kernel (`AGENTS.md`):** Fixed rules and environment definitions.

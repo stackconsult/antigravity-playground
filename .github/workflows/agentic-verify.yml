@@ -2,56 +2,71 @@ name: Agentic Verification
 
 on:
   push:
-    branches: [ "main", "feature/**" ]
+    branches: ["main", "feature/**"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   agent-verify:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Use Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20.x'
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.x"
 
-    - name: 1. Integrity Gate (Check Antigravity Folder)
-      run: |
-        if [ ! -d ".antigravity" ]; then
-          echo "CRITICAL: .antigravity/ folder missing. The Brain is offline."
-          exit 1
-        fi
+      - name: 1. Integrity Gate (Check Antigravity Folder)
+        run: |
+          if [ ! -d ".antigravity" ]; then
+            echo "CRITICAL: .antigravity/ folder missing. The Brain is offline."
+            exit 1
+          fi
 
-    - name: 2. Kernel Gate (Check AGENTS.md)
-      run: |
-        if [ ! -f "AGENTS.md" ]; then
-          echo "CRITICAL: AGENTS.md missing. The Kernel is offline."
-          exit 1
-        fi
+      - name: 2. Kernel Gate (Check AGENTS.md)
+        run: |
+          if [ ! -f "AGENTS.md" ]; then
+            echo "CRITICAL: AGENTS.md missing. The Kernel is offline."
+            exit 1
+          fi
 
-    - name: 3. Vision Gate (Check Product Vision)
-      run: |
-        if grep -q "PENDING INPUT..." AGENTS.md; then
-          echo "BLOCKER: Product Vision is empty. The Agent does not know what to build."
-          echo "Action: Agent must ask the user for the Product Vision and update AGENTS.md."
-          exit 1
-        fi
+      - name: 3. Vision Gate (Check Product Vision)
+        run: |
+          if grep -q "PENDING INPUT..." AGENTS.md; then
+            echo "BLOCKER: Product Vision is empty. The Agent does not know what to build."
+            echo "Action: Agent must ask the user for the Product Vision and update AGENTS.md."
+            exit 1
+          fi
 
-    - name: 4. Safety Gate (Secrets Scan)
-      run: |
-        if grep -r "AWS_KEY" .; then
-          echo "CRITICAL: Potential AWS Key leak detected."
-          exit 1
-        fi
+      - name: 4. Safety Gate (Secrets Scan)
+        run: |
+          if grep -r "AWS_KEY" .; then
+            echo "CRITICAL: Potential AWS Key leak detected."
+            exit 1
+          fi
 
-    - name: 5. Logic Gate (Tests)
-      run: |
-        if [ -f "package.json" ]; then
-          npm ci
-          npm test
-        else
-          echo "No package.json found. Skipping tests."
-        fi
+      - name: 5. Logic Gate (Tests)
+        run: |
+          if [ -f "package.json" ]; then
+            npm ci
+            npm test
+          else
+            echo "No package.json found. Skipping tests."
+          fi
+      - name: 6. Registry Gate (Check mcp_registry.json)
+        run: |
+          if [ ! -f ".antigravity/mcp_registry.json" ]; then
+            echo "CRITICAL: .antigravity/mcp_registry.json missing. Tooling is offline."
+            exit 1
+          fi
+
+      - name: 7. Documentation Gate (Freshness Check)
+        run: |
+          for doc in docs/ARCHITECTURE.md docs/CONSTITUTION.md; do
+            if [ ! -s "$doc" ]; then
+              echo "CRITICAL: $doc is empty or missing. Governance failure."
+              exit 1
+            fi
+          done

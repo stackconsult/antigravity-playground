@@ -7,6 +7,14 @@
     {
       "name": "genkit-mcp-server",
       "purpose": "AI framework documentation and flow management"
+    },
+    {
+      "name": "FileSystem",
+      "purpose": "Direct file manipulation within repository bounds"
+    },
+    {
+      "name": "Shell",
+      "purpose": "Sequential command execution via validated shell"
     }
   ]
 }

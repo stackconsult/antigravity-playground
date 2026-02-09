@@ -10,7 +10,7 @@ This guide details how to build the professional setup version of Antigravity ap
 - **Clarity**: Step-by-step wizard interface (Prerequisites -> Configuration -> Initialization).
 
 ## 2. Technical Requirements
-- **Runtime**: Electron 32+ (Node 20+).
+- **Runtime**: Electron 32+ (Node 24+).
 - **Packaging**: Electron Forge with `@electron-forge/maker-squirrel` (Windows) or `@electron-forge/maker-dmg` (macOS).
 - **Database**: `better-sqlite3` for local state persistence.
 

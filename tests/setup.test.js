@@ -28,9 +28,11 @@ const REQUIRED_FILES = [
     '.antigravity/AGENT_OS.md',
     '.antigravity/TRAINING_MANUAL.md',
     '.antigravity/config.json',
+    '.antigravity/mcp_registry.json',
     '.github/workflows/agentic-verify.yml',
     'docs/ARCHITECTURE.md',
-    'docs/CONSTITUTION.md'
+    'docs/CONSTITUTION.md',
+    'src/index.js'
 ];
 
 let passed = 0;
