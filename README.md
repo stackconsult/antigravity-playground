@@ -1,4 +1,5 @@
 # 🛸 Antigravity Playground
+
 **The Ground Zero Foundation for Autonomous Agent Engineering**
 
 ![Antigravity Banner](https://img.shields.io/badge/Antigravity-Protocol_v2.3-blueviolet?style=for-the-badge)
@@ -6,6 +7,7 @@
 ![Framework](https://img.shields.io/badge/Framework-Ground_Zero-orange?style=for-the-badge)
 
 ## 🌌 Philosophy
+
 The **Antigravity Framework** is a deterministic state-machine protocol designed to eliminate the "hallucination spiral" in AI coding agents. By enforcing a rigid, predictable filesystem ontology (The Golden Tree) and a structured development lifecycle (ASDLC), we enable agents to build production-grade software with 100% reliability.
 
 ---
@@ -13,10 +15,12 @@ The **Antigravity Framework** is a deterministic state-machine protocol designed
 ## ⚡ Quick Start
 
 ### 🤖 For Agents
+
 1.  **Initialize**: Read `.antigravity/BOOTLOADER.md` sequentially.
 2.  **Verify**: Run `npm test` to ensure the Golden Tree is intact.
 
 ### 👤 For Humans
+
 1.  **Clone**: Use this repository as the base for any new automation project.
 2.  **Hydrate**: `npm install` all dependencies.
 3.  **Vision**: Populate the `PRODUCT VISION` section in `AGENTS.md`.
@@ -49,13 +53,14 @@ AGENTS.md           # [KERNEL] Environment & Forbidden States
 
 ## 🛡️ Autonomy Levels
 
-| Level | Description | Safety Gate |
-|-------|-------------|-------------|
-| **1** | **Interactive** | Human merges all PRs |
-| **2** | **Supervised** | CI verifies, Human approves |
-| **3** | **Autonomous** | Auto-merge on CI pass |
+| Level | Description     | Safety Gate                 |
+| ----- | --------------- | --------------------------- |
+| **1** | **Interactive** | Human merges all PRs        |
+| **2** | **Supervised**  | CI verifies, Human approves |
+| **3** | **Autonomous**  | Auto-merge on CI pass       |
 
 ---
 
 ## 📜 License
+
 MIT © 2026 Antigravity Engineering

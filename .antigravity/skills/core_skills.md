@@ -1,10 +1,11 @@
 # Core Skills Library
 
-*Crystallized knowledge for recurring agent tasks.*
+_Crystallized knowledge for recurring agent tasks._
 
 ---
 
 ## Skill 1: `scaffold_production_repo`
+
 **Trigger:** "Initialize project" or missing directory structure.
 
 ```bash
@@ -19,6 +20,7 @@ echo '{"autonomy_level": 1, "cost_budget": 5.00}' > .antigravity/config.json
 ---
 
 ## Skill 2: `context_compaction`
+
 **Trigger:** Token usage > 20,000 or context confusion detected.
 
 ```bash
@@ -40,6 +42,7 @@ echo "[GENERATED SUMMARY]" > .antigravity/context/summary.md
 ---
 
 ## Skill 3: `autonomous_fix_loop`
+
 **Trigger:** CI failure or test failure.
 
 ```bash
@@ -61,6 +64,7 @@ git commit --amend --no-edit
 ---
 
 ## Skill 4: `skill_crystallization`
+
 **Trigger:** Successfully completed a novel, complex task.
 
 1. Abstract the specific steps into a generic template
@@ -71,6 +75,7 @@ git commit --amend --no-edit
 ---
 
 ## Skill 5: `git_feature_workflow`
+
 **Trigger:** Starting new feature development.
 
 ```bash
@@ -101,6 +106,7 @@ echo "[$(date)] START: $FEATURE_NAME" >> .antigravity/context/execution.log
 ---
 
 ## Skill 6: `integrity_check` (v2.3)
+
 **Trigger:** Phase 0 of bootloader or periodic health check.
 
 ```bash

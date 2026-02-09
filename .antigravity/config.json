@@ -1,11 +1,7 @@
 {
   "autonomy_level": 1,
-  "cost_budget": 5.00,
-  "whitelist": [
-    "github.com",
-    "npmjs.com",
-    "electronjs.org"
-  ],
+  "cost_budget": 5.0,
+  "whitelist": ["github.com", "npmjs.com", "electronjs.org"],
   "tech_stack": {
     "runtime": "node v24+",
     "framework": "electron",

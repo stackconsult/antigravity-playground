@@ -1,10 +1,11 @@
 # Electron Deployment Skills
 
-*Crystallized knowledge for Electron-specific deployment and security.*
+_Crystallized knowledge for Electron-specific deployment and security._
 
 ---
 
 ## Skill: `scaffold_electron_app`
+
 **Trigger:** "Setup electron" or "Initialize desktop app".
 
 ```bash
@@ -24,11 +25,13 @@ touch src/main.js src/preload.js src/index.html
 ---
 
 ## Skill: `ipc_secure_bridge`
+
 **Trigger:** "Create IPC channel" or "Connect renderer to main".
 
 **Implementation Template:**
 
 1. **Main Process (`src/main.js`):**
+
 ```javascript
 const { ipcMain } = require('electron');
 ipcMain.handle('channel-name', async (event, arg) => {
@@ -38,16 +41,18 @@ ipcMain.handle('channel-name', async (event, arg) => {
 ```
 
 2. **Preload Script (`src/preload.js`):**
+
 ```javascript
 const { contextBridge, ipcRenderer } = require('electron');
 contextBridge.exposeInMainWorld('electronAPI', {
-  invokeChannel: (data) => ipcRenderer.invoke('channel-name', data)
+  invokeChannel: (data) => ipcRenderer.invoke('channel-name', data),
 });
 ```
 
 ---
 
 ## Skill: `package_electron_app`
+
 **Trigger:** "Build for production" or "Create installers".
 
 ```bash
@@ -62,6 +67,7 @@ ls -R out/make
 ---
 
 ## Skill: `electron_security_audit`
+
 **Trigger:** Before production deployment.
 
 1. Verify `contextIsolation: true` in `BrowserWindow`
