@@ -1,6 +1,4 @@
-# Electron for UI Deployments: Deep Research & Antigravity IDE Integration
-
-Analysis
+# Electron for UI Deployments: Deep Research & Antigravity IDE Integration Analysis
 
 Based on comprehensive research of Electron's official documentation and your
 Antigravity IDE framework, I've analyzed Electron as a universally versatile
@@ -243,8 +241,7 @@ async getParsedFiles() {
 Menu.setApplicationMenu(null); // Before app.ready
 ```
 
-**Typical App Size**: 80-100MB zipped (includes Chromium + Node.js
-runtime)[^1_8]
+**Typical App Size**: 80-100MB zipped (includes Chromium + Node.js runtime)[^1_8]
 
 ---
 
@@ -276,8 +273,7 @@ Antigravity's artifact system complements Electron development:
 
 - **Screenshots** → Capture BrowserWindow renders
 - **Browser Recordings** → Document IPC flows, window interactions
-- **Implementation Plans** → Architecture decisions (process model, IPC
-patterns)
+- **Implementation Plans** → Architecture decisions (process model, IPC patterns)
 - **Test Results** → Renderer + main process test suites
 
 **4. Tech Stack Whitelisting**[^1_1]
@@ -445,26 +441,16 @@ Safe pattern for renderer ↔ main communication
 
 ## Decision Matrix: When to Use Electron
 
-| **Scenario**                                      | **Use Electron?** |
-**Rationale**                                             |
-| :------------------------------------------------ | :---------------- |
-:-------------------------------------------------------- |
-| B2B automation dashboard for client installations | ✅ **YES**        |
-Offline-first, filesystem access, system integration      |
-| Agent orchestration control panel                 | ✅ **YES**        | Native
-feel, always-available, terminal integration       |
-| MCP database management tool                      | ✅ **YES**        | Local
-data security, SQL tooling, multi-window            |
-| Social media scheduling tool                      | ⚠️ **MAYBE**      |
-Consider PWA first; Electron if notifications/tray needed |
-| Public-facing SaaS web app                        | ❌ **NO**         |
-Standard web stack better (no 100MB downloads)            |
-| Mobile-first application                          | ❌ **NO**         | Use
-React Native or Flutter                               |
-| Real-time collaboration tool                      | ⚠️ **MAYBE**      |
-Hybrid: Web primary, Electron for power users             |
-| Document generation pipeline                      | ✅ **YES**        |
-Headless Chromium rendering, PDF generation               |
+| **Scenario**                                      | **Use Electron?** | **Rationale**                                             |
+| :------------------------------------------------ | :---------------- | :-------------------------------------------------------- |
+| B2B automation dashboard for client installations | ✅ **YES**        | Offline-first, filesystem access, system integration      |
+| Agent orchestration control panel                 | ✅ **YES**        | Native feel, always-available, terminal integration       |
+| MCP database management tool                      | ✅ **YES**        | Local data security, SQL tooling, multi-window            |
+| Social media scheduling tool                      | ⚠️ **MAYBE**      | Consider PWA first; Electron if notifications/tray needed |
+| Public-facing SaaS web app                        | ❌ **NO**         | Standard web stack better (no 100MB downloads)            |
+| Mobile-first application                          | ❌ **NO**         | Use React Native or Flutter                               |
+| Real-time collaboration tool                      | ⚠️ **MAYBE**      | Hybrid: Web primary, Electron for power users             |
+| Document generation pipeline                      | ✅ **YES**        | Headless Chromium rendering, PDF generation               |
 
 ---
 
@@ -499,8 +485,7 @@ Headless Chromium rendering, PDF generation               |
 
 ## Conclusion & Recommendation
 
-**Electron is an EXCELLENT fit for your automation consulting business**
-because:
+**Electron is an EXCELLENT fit for your automation consulting business** because:
 
 ✅ **Aligns with your expertise**: Web tech (Angular/React) you know
 ✅ **Enables offline B2B tools**: Critical for enterprise clients
@@ -530,9 +515,7 @@ replicate.
 
 ---
 
-## Electron Phase 2: Development, Node Modules, Distribution, Testing &
-
-Debugging
+## Electron Phase 2: Development, Node Modules, Distribution, Testing & Debugging
 
 Based on comprehensive research of Electron's advanced documentation, I've
 analyzed the critical components for production deployment, native module
@@ -557,7 +540,6 @@ recompiled for Electron or you'll encounter version mismatch errors.[^2_1]
 npm install --save-dev @electron/rebuild
 
 # After every npm install:
-
 ./node_modules/.bin/electron-rebuild
 ```
 
@@ -597,18 +579,12 @@ binaries aren't available.[^2_1]
 
 ### Distribution Strategy Matrix
 
-| **Method**                       | **Use Case**       | **Complexity** |
-**Antigravity Fit**                 |
-| :------------------------------- | :----------------- | :------------- |
-:---------------------------------- |
-| **Electron Forge** (Recommended) | Complete toolchain | Low            | ✅
-**Excellent** - Agent automation |
-| **Electron Packager**            | Manual control     | Medium         | ⚠️
-Moderate - More scripting        |
-| **Electron Builder**             | Community favorite | Medium         | ⚠️
-Moderate - Different ecosystem   |
-| **Manual Packaging**             | Learning/debugging | High           | ❌ Not
-recommended                  |
+| **Method**                       | **Use Case**       | **Complexity** | **Antigravity Fit**                 |
+| :------------------------------- | :----------------- | :------------- | :---------------------------------- |
+| **Electron Forge** (Recommended) | Complete toolchain | Low            | ✅ **Excellent** - Agent automation |
+| **Electron Packager**            | Manual control     | Medium         | ⚠️ Moderate - More scripting        |
+| **Electron Builder**             | Community favorite | Medium         | ⚠️ Moderate - Different ecosystem   |
+| **Manual Packaging**             | Learning/debugging | High           | ❌ Not recommended                  |
 
 ### Packaging with Electron Forge
 
@@ -616,15 +592,12 @@ recommended                  |
 
 ```bash
 # Package app for distribution
-
 npm run package  # Creates platform-specific builds
 
 # Generate installers/executables
-
 npm run make     # macOS: DMG, Windows: MSI/Squirrel, Linux: deb/rpm
 
 # Output structure:
-
 out/
 ├── make/
 │   ├── zip/darwin/x64/app-1.0.0.zip
@@ -635,8 +608,7 @@ out/
 
 ## ASAR Archives (Application Packaging)
 
-**What is ASAR?** A simple extensive archive format that bundles source
-code:[^2_3]
+**What is ASAR?** A simple extensive archive format that bundles source code:[^2_3]
 
 - **Performance**: Faster `require()` on Windows (reduces file I/O)
 - **Obfuscation**: Basic protection from cursory inspection
@@ -671,7 +643,6 @@ win.loadURL('file:///path/to/app.asar/index.html');
 ```bash
 asar pack app app.asar --unpack "*.node"
 # Creates app.asar.unpacked/ folder - ship both together
-
 ```
 
 ## ASAR Integrity Validation
@@ -723,13 +694,11 @@ without it, users see "unidentified developer" warnings.[^2_5]
 
 ### Windows Code Signing
 
-**2023+ Requirement**: **Extended Validation (EV) certificates**
-mandatory:[^2_5]
+**2023+ Requirement**: **Extended Validation (EV) certificates** mandatory:[^2_5]
 
 - Traditional "authenticode" certificates no longer remove SmartScreen warnings
 - EV certificates stored on FIPS 140 Level 2 hardware (USB tokens)
-- **Cloud-based signing** services (DigiCert KeyLocker, SSL.com) solve CI/CD
-challenges
+- **Cloud-based signing** services (DigiCert KeyLocker, SSL.com) solve CI/CD challenges
 
 **Azure Trusted Signing** (New, Cheapest Option):
 
@@ -773,18 +742,12 @@ module.exports = {
 
 ### Update Strategy Decision Tree
 
-| **Option**                         | **Best For**                 | **Cost**
-| **Complexity** |
-| :--------------------------------- | :--------------------------- | :--------
-| :------------- |
-| **Static Storage (S3/CloudFlare)** | Private apps, custom control | ~\$1-5/mo
-| Low            |
-| **update.electronjs.org**          | Open source GitHub projects  | Free
-| Minimal        |
-| **Hazel (Vercel)**                 | Quick deployment             | Free tier
-| Low            |
-| **Nuts/Nucleus**                   | Enterprise, private repos    | Self-host
-| Medium         |
+| **Option**                         | **Best For**                 | **Cost**  | **Complexity** |
+| :--------------------------------- | :--------------------------- | :-------- | :------------- |
+| **Static Storage (S3/CloudFlare)** | Private apps, custom control | ~\$1-5/mo | Low            |
+| **update.electronjs.org**          | Open source GitHub projects  | Free      | Minimal        |
+| **Hazel (Vercel)**                 | Quick deployment             | Free tier | Low            |
+| **Nuts/Nucleus**                   | Enterprise, private repos    | Self-host | Medium         |
 
 ### Serverless Updates (Recommended for Automation Tools)
 
@@ -864,18 +827,12 @@ autoUpdater.on('error', (err) => {
 
 ### Testing Framework Comparison
 
-| **Framework**   | **Type**         | **Electron Support** | **Antigravity
-Integration**      |
-| :-------------- | :--------------- | :------------------- |
-:------------------------------- |
-| **Playwright**  | E2E              | Experimental CDP     | ✅ **Best** -
-Modern, maintained |
-| **WebdriverIO** | E2E              | Native Electron      | ✅ **Excellent** -
-Specialized   |
-| **Selenium**    | E2E              | Via ChromeDriver     | ⚠️ Legacy approach
-|
-| **Custom IPC**  | Unit/Integration | Full control         | ✅ **Advanced** -
-Lightweight    |
+| **Framework**   | **Type**         | **Electron Support** | **Antigravity Integration**      |
+| :-------------- | :--------------- | :------------------- | :------------------------------- |
+| **Playwright**  | E2E              | Experimental CDP     | ✅ **Best** - Modern, maintained |
+| **WebdriverIO** | E2E              | Native Electron      | ✅ **Excellent** - Specialized   |
+| **Selenium**    | E2E              | Via ChromeDriver     | ⚠️ Legacy approach               |
+| **Custom IPC**  | Unit/Integration | Full control         | ✅ **Advanced** - Lightweight    |
 
 ### Playwright (Modern E2E Testing)
 
@@ -936,7 +893,6 @@ npx playwright test  # Matches *.spec.js, *.test.js
 ```bash
 npm init wdio@latest ./
 # Select "Desktop Testing - Electron Applications"
-
 ```
 
 **Configuration** (`wdio.conf.js`):
@@ -1120,24 +1076,15 @@ unused features. OS code signing prevents tampering.[^2_4]
 
 ### Critical Fuses for B2B Automation Tools
 
-| **Fuse**                           | **Default** | **Recommendation** |
-**Rationale**                          |
-| :--------------------------------- | :---------- | :----------------- |
-:------------------------------------- |
-| `runAsNode`                        | Enabled     | ❌ **Disable**     |
-Prevents "living off the land" attacks |
-| `cookieEncryption`                 | Disabled    | ✅ **Enable**      |
-Encrypts cookies with OS keychain      |
-| `nodeOptions`                      | Enabled     | ❌ **Disable**     | Blocks
-NODE_OPTIONS injection          |
-| `nodeCliInspect`                   | Enabled     | ❌ **Disable**     |
-Prevents debug mode exploitation       |
-| `embeddedAsarIntegrityValidation`  | Disabled    | ✅ **Enable**      |
-Validates app.asar integrity           |
-| `onlyLoadAppFromAsar`              | Disabled    | ✅ **Enable**      | Blocks
-loading unvalidated code        |
-| `grantFileProtocolExtraPrivileges` | Enabled     | ❌ **Disable**     | Removes
-unnecessary file:// privileges |
+| **Fuse**                           | **Default** | **Recommendation** | **Rationale**                          |
+| :--------------------------------- | :---------- | :----------------- | :------------------------------------- |
+| `runAsNode`                        | Enabled     | ❌ **Disable**     | Prevents "living off the land" attacks |
+| `cookieEncryption`                 | Disabled    | ✅ **Enable**      | Encrypts cookies with OS keychain      |
+| `nodeOptions`                      | Enabled     | ❌ **Disable**     | Blocks NODE_OPTIONS injection          |
+| `nodeCliInspect`                   | Enabled     | ❌ **Disable**     | Prevents debug mode exploitation       |
+| `embeddedAsarIntegrityValidation`  | Disabled    | ✅ **Enable**      | Validates app.asar integrity           |
+| `onlyLoadAppFromAsar`              | Disabled    | ✅ **Enable**      | Blocks loading unvalidated code        |
+| `grantFileProtocolExtraPrivileges` | Enabled     | ❌ **Disable**     | Removes unnecessary file:// privileges |
 
 ### Flipping Fuses
 
@@ -1190,18 +1137,12 @@ npx @electron/fuses read --app /Applications/MyApp.app
 
 ### ESM Support Matrix[^2_9]
 
-| **Context**            | **ESM Loader** | **Notes**
-|
-| :--------------------- | :------------- |
-:------------------------------------ |
-| Main Process           | Node.js        | Requires `.mjs` or `"type":
-"module"` |
-| Renderer (Sandboxed)   | Chromium       | No Node.js APIs, no npm modules
-|
-| Renderer (Unsandboxed) | Chromium       | Still no Node.js in imports
-|
-| Preload Scripts        | Node.js        | Must use `.mjs` extension
-|
+| **Context**            | **ESM Loader** | **Notes**                             |
+| :--------------------- | :------------- | :------------------------------------ |
+| Main Process           | Node.js        | Requires `.mjs` or `"type": "module"` |
+| Renderer (Sandboxed)   | Chromium       | No Node.js APIs, no npm modules       |
+| Renderer (Unsandboxed) | Chromium       | Still no Node.js in imports           |
+| Preload Scripts        | Node.js        | Must use `.mjs` extension             |
 
 ### Main Process ESM[^2_9]
 
@@ -1263,8 +1204,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
 ## Context
 
-Complete workflow for packaging, signing, and distributing Electron apps with
-auto-updates.
+Complete workflow for packaging, signing, and distributing Electron apps with auto-updates.
 
 ## Prerequisites
 
@@ -1279,7 +1219,6 @@ auto-updates.
 ```bash
 npm install --save-dev @electron/rebuild
 ## Automatic rebuild in Forge
-
 ```text
 ````
 
@@ -1352,14 +1291,12 @@ test('app launches', async () => {
 
 ```markdown
 ## Tech Stack
-
 - Runtime: Node.js 20+, Electron 32+
 - Frontend: Angular 17 / React 18
 - Packaging: Electron Forge
 - Testing: Playwright
 
 ## Allowed Operations
-
 - `npm run package` / `npm run make`
 - `@electron/rebuild` execution
 - `@electron/fuses` configuration
@@ -1367,14 +1304,12 @@ test('app launches', async () => {
 - Code signing with environment credentials
 
 ## Forbidden Actions
-
 - Manual binary patching
 - Disabling security fuses without justification
 - Skipping code signing in production builds
 - Loading remote content without HTTPS + CSP
 
 ## Verification Artifacts
-
 - Screenshots of packaged app on macOS/Windows/Linux
 - Code signing validation output
 - Fuse configuration readout
@@ -1505,8 +1440,7 @@ jobs:
 3. **Testing Agent** → Writes Playwright tests, validates builds
 4. **Build Agent** → Executes `npm run make`, flips fuses, signs binaries
 5. **Distribution Agent** → Uploads to S3, updates metadata files
-6. **Verification Agent** → Downloads update, validates integrity, tests
-installation
+6. **Verification Agent** → Downloads update, validates integrity, tests installation
 
 **Workflow Artifacts**:
 
@@ -1523,14 +1457,12 @@ installation
 
 Before proceeding, **immediate actions**:
 
-1. **Obtain certificates**: Start Apple Developer + Azure Trusted Signing
-applications (1-2 week lead time)
+1. **Obtain certificates**: Start Apple Developer + Azure Trusted Signing applications (1-2 week lead time)
 2. **Create prototype**: Build minimal Electron app via Antigravity with Forge
 3. **Test full pipeline**: Package → Sign → Upload → Auto-update on staging
 4. **Document workflow**: Crystallize as reusable Antigravity skill
 
-Your automation consulting business now has a **production-grade Electron
-deployment framework** that can deliver enterprise-ready desktop tools with:
+Your automation consulting business now has a **production-grade Electron deployment framework** that can deliver enterprise-ready desktop tools with:
 
 - ✅ Cross-platform support (Windows/macOS/Linux)
 - ✅ Secure code signing and updates
@@ -1538,22 +1470,15 @@ deployment framework** that can deliver enterprise-ready desktop tools with:
 - ✅ Professional security posture
 - ✅ Agent-orchestrated development
 
-**Competitive moat**: Combining Antigravity's agent orchestration with
-Electron's production tooling creates a unique capability—"AI-Built,
-Enterprise-Deployed Desktop Automation" that traditional developers can't match
-for speed or reliability.
+**Competitive moat**: Combining Antigravity's agent orchestration with Electron's production tooling creates a unique capability—"AI-Built, Enterprise-Deployed Desktop Automation" that traditional developers can't match for speed or reliability.
 
 ---
 
 ## Phase 3: Strategic Containerization & Layered Architecture
 
-Based on deep research into Electron's advanced patterns and your requirement
-for "containerized components," I have developed a **Universally Versatile
-Architecture** that integrates Electron, Docker, and MCP into a cohesive layered
-system.
+Based on deep research into Electron's advanced patterns and your requirement for "containerized components," I have developed a **Universally Versatile Architecture** that integrates Electron, Docker, and MCP into a cohesive layered system.
 
-This strategy redefines "containerization" for your builds in three distinct
-dimensions:
+This strategy redefines "containerization" for your builds in three distinct dimensions:
 
 1. **Process Containers**: Isolating automation logic (Sidecars).
 2. **Service Containers**: Dockerizing local databases/backends.
@@ -1563,9 +1488,7 @@ dimensions:
 
 ## The 5-Layer "Antigravity" Electron Architecture
 
-To "Layer it out" effectively, we move beyond the basic Main/Renderer model to a
-robust 5-layer architecture. This ensures your automation tools are modular,
-crash-resistant, and infinitely scalable.
+To "Layer it out" effectively, we move beyond the basic Main/Renderer model to a robust 5-layer architecture. This ensures your automation tools are modular, crash-resistant, and infinitely scalable.
 
 ### Layer 1: The Presentation Layer (Renderer Process)
 
@@ -1574,8 +1497,7 @@ _The "Face" of your automation._
 - **Role**: Pure UI rendering. No heavy lifting.
 - **Tech**: Angular (your expertise) or React.
 - **Constraint**: **Zero Node.js access**. Strictly sandboxed.
-- **Antigravity Agent**: `Frontend Agent` scaffolds this using your existing UI
-skills.
+- **Antigravity Agent**: `Frontend Agent` scaffolds this using your existing UI skills.
 
 ### Layer 2: The Bridge Layer (Preload & Context Isolation)
 
@@ -1583,10 +1505,8 @@ _The "Secure Conduit."_
 
 - **Role**: The only path between UI and Logic.
 - **Mechanism**: `contextBridge.exposeInMainWorld`.
-- **Strategy**: Define typed API contracts (e.g.,
-`window.automation.runTask()`).
-- **Antigravity Agent**: `Coding Agent` generates these strict TypeScript
-interfaces.
+- **Strategy**: Define typed API contracts (e.g., `window.automation.runTask()`).
+- **Antigravity Agent**: `Coding Agent` generates these strict TypeScript interfaces.
 
 ### Layer 3: The Application Layer (Main Process)
 
@@ -1594,19 +1514,16 @@ _The "Orchestrator."_
 
 - **Role**: Window management, system menus, update handling.
 - **Strategy**: Keep this **thin**. It delegates actual work to Layer 4.
-- **Key Pattern**: Use `ipcMain.handle` to route requests from Layer 1 to Layer
-4.
+- **Key Pattern**: Use `ipcMain.handle` to route requests from Layer 1 to Layer 4.
 
 ### Layer 4: The "Sidecar" Container Layer (Critical for Automation)
 
 _The "Engine Room" – Where your consultant value lives._
 
-- **Concept**: Run automation scripts (Python, Go, specialized Node binaries) as
-separate child processes managed by Electron.
+- **Concept**: Run automation scripts (Python, Go, specialized Node binaries) as separate child processes managed by Electron.
 - **Why**:
   - **Stability**: If a Python script crashes, the UI stays alive.
-  - **Versatility**: Use Python for AI/Data libraries (Pandas, PyTorch) that
-Node.js struggles with.
+  - **Versatility**: Use Python for AI/Data libraries (Pandas, PyTorch) that Node.js struggles with.
   - **MCP Integration**: Host local MCP Servers here.[^3_1]
 - **Implementation**: Use `utilityProcess` or `child_process.spawn`.
 
@@ -1614,45 +1531,35 @@ Node.js struggles with.
 
 _The "Foundation."_
 
-- **Concept**: Databases (PostgreSQL, Vector DBs) running in Docker containers
-on the user's machine, managed by the Electron app.
+- **Concept**: Databases (PostgreSQL, Vector DBs) running in Docker containers on the user's machine, managed by the Electron app.
 - **Use Case**: Local "mcp databases" for persistent agent memory.
-- **Strategy**: Electron checks/starts Docker containers on launch using the
-Sidecar layer.
+- **Strategy**: Electron checks/starts Docker containers on launch using the Sidecar layer.
 
 ---
 
 ## Deep Dive: The Sidecar Strategy (Automation & MCP)
 
-This is the most critical component for your "Automation Consultant" persona. It
-allows you to package complex agentic behaviors into the desktop app.
+This is the most critical component for your "Automation Consultant" persona. It allows you to package complex agentic behaviors into the desktop app.
 
 ### A. The Python Sidecar Pattern
 
 For automations requiring Python libraries (e.g., Selenium, AI models):
 
-1. **Package**: Bundle a standalone Python executable (using PyInstaller) inside
-the Electron app (ASAR unpacked).
+1. **Package**: Bundle a standalone Python executable (using PyInstaller) inside the Electron app (ASAR unpacked).
 2. **Spawn**: Main process spawns the Python executable.
-3. **Communicate**: Use **StdIO** (Standard Input/Output) or **ZeroMQ** for fast
-message passing between Electron (Node) and Python.
+3. **Communicate**: Use **StdIO** (Standard Input/Output) or **ZeroMQ** for fast message passing between Electron (Node) and Python.
 
 **Antigravity Workflow**:
 
-> "Agent, create a Python sidecar that runs a Selenium scraper. Set up the IPC
-channel so the Angular frontend can trigger the scrape and receive real-time
-status updates."
+> "Agent, create a Python sidecar that runs a Selenium scraper. Set up the IPC channel so the Angular frontend can trigger the scrape and receive real-time status updates."
 
 ### B. The Local MCP Hub Pattern
 
 Your Electron app becomes a **Client** and **Host** for MCP Servers.[^3_2][^3_1]
 
-- **Internal Host**: The app spawns an internal MCP server (e.g., a "FileSystem
-MCP" or "Postgres MCP") as a sidecar.
-- **External Client**: The app can connect to Claude Desktop or other agents via
-MCP.
-- **Benefits**: Your desktop app exposes its internal tools (e.g., "Get Client
-Data") to other AI agents on the system.
+- **Internal Host**: The app spawns an internal MCP server (e.g., a "FileSystem MCP" or "Postgres MCP") as a sidecar.
+- **External Client**: The app can connect to Claude Desktop or other agents via MCP.
+- **Benefits**: Your desktop app exposes its internal tools (e.g., "Get Client Data") to other AI agents on the system.
 
 ---
 
@@ -1696,12 +1603,10 @@ Create a reusable skill in `.antigravity/skills/electron-sidecar.md`:
 
 ### 3. Containerized Build Pipeline (Docker)
 
-Ensure **Reproducibility** by building inside Docker (Layering the _Build_
-process).
+Ensure **Reproducibility** by building inside Docker (Layering the _Build_ process).
 
 - Use `electron-userland/builder:wine` Docker image for CI/CD.
-- Allows building Windows `.exe` and Linux `.deb` from your Mac/Linux
-workstation without VM overhead.
+- Allows building Windows `.exe` and Linux `.deb` from your Mac/Linux workstation without VM overhead.
 
 ---
 
@@ -1709,24 +1614,15 @@ workstation without VM overhead.
 
 **Verdict**: For your specific "Automation Consultant" goals: **YES**.
 
-| Feature                | Web App          | Electron + Sidecars      | Winner
-|
-| :--------------------- | :--------------- | :----------------------- |
-:-------------------- |
-| **System Access**      | Restricted       | Full (Filesystem, Shell) |
-**Electron**          |
-| **Python Integration** | Server-side only | Local Sidecar (Offline)  |
-**Electron**          |
-| **MCP Hosting**        | Remote HTTP      | Local Process/StdIO      |
-**Electron**          |
-| **Data Privacy**       | Cloud            | Local (Docker/SQLite)    |
-**Electron**          |
-| **Deployment**         | URL              | Installer (.exe/.dmg)    |
-**Context Dependent** |
+| Feature                | Web App          | Electron + Sidecars      | Winner                |
+| :--------------------- | :--------------- | :----------------------- | :-------------------- |
+| **System Access**      | Restricted       | Full (Filesystem, Shell) | **Electron**          |
+| **Python Integration** | Server-side only | Local Sidecar (Offline)  | **Electron**          |
+| **MCP Hosting**        | Remote HTTP      | Local Process/StdIO      | **Electron**          |
+| **Data Privacy**       | Cloud            | Local (Docker/SQLite)    | **Electron**          |
+| **Deployment**         | URL              | Installer (.exe/.dmg)    | **Context Dependent** |
 
-**Why it wins for you**: It allows you to deliver **"Agent-in-a-Box"**
-solutions. You hand a client an `.exe` that contains the UI, the AI Logic
-(Sidecar), and the Database (SQLite/Docker), running entirely on their machine.
+**Why it wins for you**: It allows you to deliver **"Agent-in-a-Box"** solutions. You hand a client an `.exe` that contains the UI, the AI Logic (Sidecar), and the Database (SQLite/Docker), running entirely on their machine.
 
 ---
 
@@ -1746,18 +1642,13 @@ Your "Antigravity" framework is now theoretically complete for Desktop Agents.
 - **Brain**: MCP Servers running locally
 
 **Call to Action**:
-We can now move to **Synthesizing the Master Playbook**. I can generate the
-specific `AGENTS.md`, `ARCHITECTURE.md`, and `CONSTITUTION.md` file content
-tailored for this Electron-MCP-Sidecar stack to finalize your Antigravity
-template.
+We can now move to **Synthesizing the Master Playbook**. I can generate the specific `AGENTS.md`, `ARCHITECTURE.md`, and `CONSTITUTION.md` file content tailored for this Electron-MCP-Sidecar stack to finalize your Antigravity template.
 
 ---
 
 ## Avid Antigravity Electron-MCP Playbook
 
-This playbook represents the **crystallized result** of our deep dive. It is the
-definitive guide for your "Automation Consultant" builds, merging Antigravity's
-agentic workflow with Electron's enterprise capabilities and MCP's intelligence.
+This playbook represents the **crystallized result** of our deep dive. It is the definitive guide for your "Automation Consultant" builds, merging Antigravity's agentic workflow with Electron's enterprise capabilities and MCP's intelligence.
 
 [^4_1]
 
@@ -1765,8 +1656,7 @@ agentic workflow with Electron's enterprise capabilities and MCP's intelligence.
 
 ## 1. AGENTS.md (The Kernel)
 
-This file defines the operating system for your agents. It authorizes them to
-use Electron, Sidecars, and MCP.
+This file defines the operating system for your agents. It authorizes them to use Electron, Sidecars, and MCP.
 
 ```markdown
 ## AGENTS.md - Avid Antigravity Electron Kernel
@@ -1810,8 +1700,7 @@ UIs, Node.js orchestration, and Python/MCP intelligence.
 
 ## 6. PRODUCT VISION
 
-> "We build tools that give B2B clients superpowers on their local machines,
-independent of the cloud, secure by design."
+> "We build tools that give B2B clients superpowers on their local machines, independent of the cloud, secure by design."
 ```text
 
 ---
@@ -1930,8 +1819,7 @@ await server.connect(transport);
 ### B. Connecting to MCP Clients (External)
 
 Your app can connect to _other_ agents (like Claude Desktop).
-**Pattern**: Add a "Connect to Agent" button in your Angular UI that spawns a
-connection to an external MCP host.
+**Pattern**: Add a "Connect to Agent" button in your Angular UI that spawns a connection to an external MCP host.
 
 ---
 
@@ -1949,16 +1837,12 @@ Before you ship to a client, run this **Avid Verification Protocol**:
 
 ## Implementation Plan
 
-1. **Initialize**: Run `npm init electron-app@latest my-automation-tool --
---template=typescript-webpack`.
-2. **Inject**: Copy the `AGENTS.md`, `ARCHITECTURE.md`, `CONSTITUTION.md` files
-into the root.
+1. **Initialize**: Run `npm init electron-app@latest my-automation-tool -- --template=typescript-webpack`.
+2. **Inject**: Copy the `AGENTS.md`, `ARCHITECTURE.md`, `CONSTITUTION.md` files into the root.
 3. **Scaffold**: Ask your Antigravity Agent:
-   > "Review ARCHITECTURE.md. Scaffold the Angular frontend and the Python
-Sidecar structure. Ensure the IPC bridge is typed according to Layer 2 rules."
+   > "Review ARCHITECTURE.md. Scaffold the Angular frontend and the Python Sidecar structure. Ensure the IPC bridge is typed according to Layer 2 rules."
 
-You now have a **Universally Versatile** factory for building enterprise-grade
-automation tools. This is the "Avid Antigravity" standard.
+You now have a **Universally Versatile** factory for building enterprise-grade automation tools. This is the "Avid Antigravity" standard.
 
 ---
 
@@ -2091,3 +1975,4 @@ automation tools. This is the "Avid Antigravity" standard.
 [^3_2]: <https://github.com/amafjarkasi/electron-mcp-server>
 
 [^4_1]: antigravity-professional-use-case.md
+
