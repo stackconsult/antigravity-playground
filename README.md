@@ -16,15 +16,15 @@ The **Antigravity Framework** is a deterministic state-machine protocol designed
 
 ### 🤖 For Agents
 
-1.  **Initialize**: Read `.antigravity/BOOTLOADER.md` sequentially.
-2.  **Verify**: Run `npm test` to ensure the Golden Tree is intact.
+1. **Initialize**: Read `.antigravity/BOOTLOADER.md` sequentially.
+2. **Verify**: Run `npm test` to ensure the Golden Tree is intact.
 
 ### 👤 For Humans
 
-1.  **Clone**: Use this repository as the base for any new automation project.
-2.  **Hydrate**: `npm install` all dependencies.
-3.  **Vision**: Populate the `PRODUCT VISION` section in `AGENTS.md`.
-4.  **Execute**: Watch as agents use the pre-crystallized **Skills** to build your vision.
+1. **Clone**: Use this repository as the base for any new automation project.
+2. **Hydrate**: `npm install` all dependencies.
+3. **Vision**: Populate the `PRODUCT VISION` section in `AGENTS.md`.
+4. **Execute**: Watch as agents use the pre-crystallized **Skills** to build your vision.
 
 ---
 
@@ -37,7 +37,7 @@ The **Antigravity Framework** is a deterministic state-machine protocol designed
 ├── TRAINING_MANUAL.md  # Core Engineering Ethos
 ├── config.json     # Autonomy & Whitelist Config
 ├── context/        # Active Working Memory (logs, plans)
-└── skills/         # Crystallized Logic Templates
+└── skills/         # Crystallized Logic Templates (e.g., electron/, angular/)
 
 docs/               # [GOVERNANCE] Knowledge & Rules
 ├── ARCHITECTURE.md # System Design & Boundaries
